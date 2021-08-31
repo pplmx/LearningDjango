@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+verify_ssl = true
+name = "tsinghua"
+
+[packages]
+django = "==3.2.6"
+
+[dev-packages]
+pre-commit = "==2.14.1"
+black = "==21.8b0"
+commitizen = "==2.18.0"
+
+[requires]
+python_version = "3.9"
