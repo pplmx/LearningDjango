@@ -8,8 +8,6 @@ repos:
             -
                 id: trailing-whitespace
             -
-                id: pretty-format-json
-            -
                 id: check-merge-conflict
     -
         repo: https://github.com/psf/black

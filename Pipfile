@@ -4,12 +4,14 @@ verify_ssl = true
 name = "tsinghua"
 
 [packages]
-django = "==3.2.6"
+djangorestframework = "*"
+django = "*"
+pygments = "*"
 
 [dev-packages]
-pre-commit = "==2.14.1"
+pre-commit = "*"
 black = "==21.8b0"
-commitizen = "==2.18.0"
+commitizen = "*"
 
 [requires]
 python_version = "3.9"
