@@ -7,6 +7,7 @@ name = "tsinghua"
 djangorestframework = "*"
 django = "*"
 pygments = "*"
+pillow = "*"
 
 [dev-packages]
 pre-commit = "*"
