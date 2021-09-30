@@ -1,8 +1,8 @@
 from PIL import Image
 
 # 读取图片
-guoqi = Image.open('hq.png').convert('RGBA')
-touxiang = Image.open('avatar.png').convert('RGBA')
+guoqi = Image.open("hq.png").convert("RGBA")
+touxiang = Image.open("441b991a3fa1e3ddef8c80d73e31bdf.jpg").convert("RGBA")
 
 # 获取国旗的尺寸
 x, y = guoqi.size
@@ -27,4 +27,4 @@ for i in range(w):
 
 # 粘贴到头像并保存
 touxiang.paste(quyu, (0, 0), quyu)
-touxiang.save('五星红旗.png')
+touxiang.save("National_FLAG1.png")
