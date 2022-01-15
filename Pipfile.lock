@@ -26,11 +26,11 @@
         },
         "django": {
             "hashes": [
-                "sha256:95b318319d6997bac3595517101ad9cc83fe5672ac498ba48d1a410f47afecd2",
-                "sha256:e93c93565005b37ddebf2396b4dc4b6913c1838baa82efdfb79acedd5816c240"
+                "sha256:0a0a37f0b93aef30c4bf3a839c187e1175bcdeb7e177341da0cb7b8194416891",
+                "sha256:69c94abe5d6b1b088bf475e09b7b74403f943e34da107e798465d2045da27e75"
             ],
             "index": "tsinghua",
-            "version": "==3.2.7"
+            "version": "==3.2.11"
         },
         "djangorestframework": {
             "hashes": [
@@ -175,11 +175,11 @@
         },
         "identify": {
             "hashes": [
-                "sha256:8d80d877441073e7222ff272da45ca5ca1d901412790544b446e7d363ad5e9f0",
-                "sha256:ac9c919c8ac5b90d03f8e1bce6dedcbd8a3b2a59c46737c04ed852e2d307af29"
+                "sha256:6b4b5031f69c48bf93a646b90de9b381c6b5f560df4cbe0ed3cf7650ae741e4d",
+                "sha256:aa68609c7454dbcaae60a01ff6b8df1de9b39fe6e50b1f6107ec81dcda624aa6"
             ],
             "markers": "python_full_version >= '3.6.1'",
-            "version": "==2.4.3"
+            "version": "==2.4.4"
         },
         "jinja2": {
             "hashes": [
