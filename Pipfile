@@ -11,7 +11,7 @@ pillow = "*"
 
 [dev-packages]
 pre-commit = "*"
-black = "==21.8b0"
+black = "==22.1.0"
 commitizen = "*"
 
 [requires]
