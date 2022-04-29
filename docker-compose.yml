@@ -1,0 +1,7 @@
+version: Compose specification
+services:
+    app:
+        image: pplmx/djgo
+        ports:
+            - "8000:8000"
+        restart: always

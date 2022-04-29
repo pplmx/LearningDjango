@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.urls import include, path
 
 # Wire up our API using automatic URL routing.
@@ -22,3 +23,6 @@ urlpatterns = [
     path("", include("snippets.urls")),
     path("api-auth/", include("rest_framework.urls")),
 ]
+
+# gunicorn start the server with the following command, if not, static resource will not be served:
+urlpatterns += staticfiles_urlpatterns()
