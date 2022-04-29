@@ -1,7 +1,5 @@
 FROM python:3.10-alpine
 
-ENV pip_url https://pypi.tuna.tsinghua.edu.cn/simple
-
 WORKDIR /app
 
 # set environment variables
