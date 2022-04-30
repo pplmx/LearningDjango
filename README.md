@@ -30,7 +30,8 @@ python manage.py startapp demo2
 ```
 
 ## FYI
-If you wanna a much smaller image, maybe you can use the following:
+If you wanna a much smaller image, maybe you can use the following.
+BTW, I don't suggest you use the following in the development period, because its building is so slow.
 ```dockerfile
 FROM python:3.10-alpine
 WORKDIR /app
