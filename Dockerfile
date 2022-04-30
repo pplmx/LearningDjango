@@ -35,4 +35,5 @@ EXPOSE 8000
 #USER sample
 
 # here the gunicorn will read the default settings from ./gunicorn.conf.py
-CMD python manage.py makemigrations && python manage.py migrate && gunicorn blog.asgi
+RUN chmod +x run.sh
+CMD ["./run.sh"]

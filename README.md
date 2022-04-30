@@ -16,8 +16,8 @@ python manage.py runserver 8080
 # 0 is a shortcut for 0.0.0.0
 python manage.py runserver 0:8080
 
-# use gunicorn and uvicorn
-gunicorn djgo.wsgi:application -b 0.0.0.0:8000 -w 2 -k uvicorn.workers.UvicornWorker
+# use gunicorn and uvicorn and read config from ./gunicorn.conf.py
+gunicorn blog.asgi
 ```
 
 ## create more apps
