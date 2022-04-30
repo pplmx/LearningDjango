@@ -1,4 +1,4 @@
-FROM python:3.10-alpine
+FROM python:3.10-slim
 WORKDIR /app
 
 # set environment variables
@@ -17,22 +17,15 @@ ENV PIP_INDEX_URL https://pypi.tuna.tsinghua.edu.cn/simple
 COPY requirements.txt .
 
 # the apk dependencies is for installing Pillow
-RUN apk add --update --no-cache --virtual .tmp gcc libc-dev linux-headers zlib-dev jpeg-dev && \
-    apk add libjpeg && \
-    pip install -U pip && \
+RUN pip install -U pip && \
     pip install -r requirements.txt && \
-    echo '====== requirements.txt Installed ======' && \
-    pip install uvicorn gunicorn && \
-    apk del .tmp
+    pip install uvicorn gunicorn
 
 
 # copy project
 COPY . .
 
 EXPOSE 8000
-
-#RUN addgroup -S sample && adduser -S sample -G sample
-#USER sample
 
 # here the gunicorn will read the default settings from ./gunicorn.conf.py
 RUN chmod +x run.sh
