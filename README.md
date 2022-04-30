@@ -1,5 +1,10 @@
 # Django
 
+## docker
+```shell
+make dev
+```
+
 ## Running
 
 ```shell
