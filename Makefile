@@ -1,4 +1,4 @@
-IMAGE_NAME="pplmx/djgo"
+IMAGE_NAME="pplmx/drf_sample"
 COMPOSE_SERVICE_NAME="sample"
 
 image:

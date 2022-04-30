@@ -1,7 +1,8 @@
 version: Compose specification
 services:
     app:
-        image: pplmx/djgo
+        # or maybe you can use this "ghcr.io/pplmx/drf_sample"
+        image: pplmx/drf_sample
         ports:
             - "8000:8000"
         restart: always

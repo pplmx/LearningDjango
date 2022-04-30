@@ -15,6 +15,11 @@ jobs:
                 uses: docker/setup-qemu-action@v1
             -   name: Set up Docker Buildx
                 uses: docker/setup-buildx-action@v1
+            -   name: Login to Docker Hub
+                uses: docker/login-action@v1
+                with:
+                    username: ${{ secrets.DOCKERHUB_USERNAME }}
+                    password: ${{ secrets.DOCKERHUB_TOKEN }}
             -   name: Login to GitHub Container Registry
                 uses: docker/login-action@v1
                 with:
@@ -28,5 +33,7 @@ jobs:
                     platforms: linux/amd64,linux/arm64
                     push: true
                     tags: |
+                        pplmx/drf_sample:latest
+                        pplmx/drf_sample:0.0.1
                         ghcr.io/pplmx/drf_sample:latest
                         ghcr.io/pplmx/drf_sample:0.0.1
