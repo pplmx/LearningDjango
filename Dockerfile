@@ -12,6 +12,10 @@ ENV PYTHONUNBUFFERED 1
 ENV PIP_NO_CACHE_DIR 1
 ENV PIP_INDEX_URL https://pypi.tuna.tsinghua.edu.cn/simple
 
+ENV DJANGO_SUPERUSER_PASSWORD admin
+ENV DJANGO_SUPERUSER_EMAIL admin@admin.io
+ENV DJANGO_SUPERUSER_USERNAME admin
+
 
 # install dependencies
 COPY requirements.txt .

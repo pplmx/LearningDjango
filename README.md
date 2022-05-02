@@ -1,5 +1,21 @@
 # Django
 
+## Administrator
+Default:
+```text
+username: admin
+password: admin
+email: admin@admin.io
+```
+You can change them by transferring the ENV variables to the Docker container.
+
+ENV:
+```text
+DJANGO_SUPERUSER_USERNAME
+DJANGO_SUPERUSER_PASSWORD
+DJANGO_SUPERUSER_EMAIL
+```
+
 ## docker
 ```shell
 make dev
