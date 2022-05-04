@@ -1,4 +1,11 @@
 FROM python:3.10-slim
+
+# for those packages who need to be built in the container
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    && rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 # set environment variables
@@ -23,7 +30,7 @@ COPY requirements.txt .
 # the apk dependencies is for installing Pillow
 RUN pip install -U pip && \
     pip install -r requirements.txt && \
-    pip install uvicorn gunicorn
+    pip install uvicorn gunicorn psycopg2
 
 
 # copy project

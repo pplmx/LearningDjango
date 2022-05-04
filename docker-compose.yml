@@ -6,3 +6,20 @@ services:
         ports:
             - "8000:8000"
         restart: always
+        networks:
+            - sample_net
+        env_file:
+            - .env
+        depends_on:
+            - db
+    db:
+        image: postgres
+        ports:
+            - "5432:5432"
+        restart: always
+        networks:
+            - sample_net
+        env_file:
+            - .env
+networks:
+    sample_net:
