@@ -1,4 +1,4 @@
-argcomplete==1.12.3
+argcomplete==2.0.0
 asgiref==3.5.0
 cfgv==3.3.1
 click==8.1.3
