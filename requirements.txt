@@ -17,7 +17,7 @@ nodeenv==1.6.0
 packaging==21.3
 Pillow==9.1.0
 platformdirs==2.5.2
-pre-commit==2.18.1
+pre-commit==2.19.0
 prompt-toolkit==3.0.29
 psycopg2==2.9.3
 Pygments==2.12.0
