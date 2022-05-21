@@ -10,7 +10,7 @@ Django==4.0.4
 djangorestframework==3.13.1
 filelock==3.6.0
 h11==0.13.0
-identify==2.5.0
+identify==2.5.1
 Jinja2==3.1.2
 MarkupSafe==2.1.1
 nodeenv==1.6.0
