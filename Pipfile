@@ -9,6 +9,8 @@ django = "*"
 pygments = "*"
 pillow = "*"
 celery = "*"
+uvicorn = "*"
+gunicorn = "*"
 
 [dev-packages]
 pre-commit = "*"

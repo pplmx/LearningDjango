@@ -13,9 +13,9 @@ services:
         depends_on:
             - db
     db:
-        image: postgres
+        image: mariadb
         ports:
-            - "5432:5432"
+            - "3306:3306"
         restart: always
         networks:
             - sample_net

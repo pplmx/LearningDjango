@@ -1,12 +1,4 @@
-FROM python:3.10-slim
-
-# for those packages who need to be built in the container
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /app
+FROM python:3.10-slim AS builder
 
 # set environment variables
 # Prevents Python from writing pyc files to disc (equivalent to python -B option)
@@ -18,20 +10,28 @@ ENV PYTHONUNBUFFERED 1
 # NO Cache
 ENV PIP_NO_CACHE_DIR 1
 ENV PIP_INDEX_URL https://pypi.tuna.tsinghua.edu.cn/simple
+# create .venv at the current directory
+ENV PIPENV_VENV_IN_PROJECT 1
+
+COPY Pipfile* .
+
+# for those packages who need to be built in the container
+RUN pip install -U pip pipenv setuptools wheel && \
+    pipenv install --deploy && \
+    pipenv install mysqlclient
+
+
+FROM python:3.10-slim
 
 ENV DJANGO_SUPERUSER_PASSWORD admin
 ENV DJANGO_SUPERUSER_EMAIL admin@admin.io
 ENV DJANGO_SUPERUSER_USERNAME admin
 
+WORKDIR /app
 
-# install dependencies
-COPY requirements.txt .
-
-# the apk dependencies is for installing Pillow
-RUN pip install -U pip && \
-    pip install -r requirements.txt && \
-    pip install uvicorn gunicorn psycopg2
-
+# build python environment
+COPY --from=builder /.venv /app/.venv
+ENV PATH="/app/.venv/bin:$PATH"
 
 # copy project
 COPY . .
