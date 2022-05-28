@@ -13,7 +13,7 @@ ENV PIP_INDEX_URL https://pypi.tuna.tsinghua.edu.cn/simple
 # create .venv at the current directory
 ENV PIPENV_VENV_IN_PROJECT 1
 
-COPY Pipfile* .
+COPY Pipfile Pipfile.lock ./
 
 # for those packages who need to be built in the container
 RUN pip install -U pip pipenv setuptools wheel && \
