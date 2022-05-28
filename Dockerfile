@@ -16,7 +16,10 @@ ENV PIPENV_VENV_IN_PROJECT 1
 COPY Pipfile Pipfile.lock ./
 
 # for those packages who need to be built in the container
-RUN pip install -U pip pipenv setuptools wheel && \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential libmariadb-dev && \
+    rm -rf /var/lib/apt/lists/* && \
+    pip install -U pip pipenv setuptools wheel && \
     pipenv install --deploy && \
     pipenv install mysqlclient
 
