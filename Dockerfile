@@ -15,13 +15,17 @@ ENV PIPENV_VENV_IN_PROJECT 1
 
 COPY Pipfile Pipfile.lock ./
 
-# for those packages who need to be built in the container
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential libmariadb-dev && \
-    rm -rf /var/lib/apt/lists/* && \
-    pip install -U pip pipenv setuptools wheel && \
-    pipenv install --deploy && \
-    pipenv install mysqlclient
+    build-essential \
+    ca-certificates \
+    libffi-dev \
+    libssl-dev \
+    libxml2-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# for those packages who need to be built in the container
+RUN pip install -U pip pipenv setuptools wheel && \
+    pipenv install --deploy
 
 
 FROM python:3.10-slim
