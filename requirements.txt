@@ -5,7 +5,7 @@
 #    pipenv lock --requirements
 #
 
--i https://pypi.tuna.tsinghua.edu.cn/simple
+-i https://pypi.tuna.tsinghua.edu.cn/simple/
 asgiref==3.5.2; python_version >= '3.7'
 django==4.0.6
 djangorestframework==3.13.1
