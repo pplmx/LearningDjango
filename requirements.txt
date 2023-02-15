@@ -7,7 +7,7 @@
 
 -i https://pypi.tuna.tsinghua.edu.cn/simple
 asgiref==3.5.2; python_version >= '3.7'
-django==4.0.6
+django==4.1.7
 djangorestframework==3.13.1
 pillow==9.1.1
 pygments==2.12.0
