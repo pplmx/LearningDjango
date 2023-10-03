@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.12-slim
 
 # for those packages who need to be built in the container
 RUN apt-get update && apt-get install -y \
