@@ -11,6 +11,7 @@ djangorestframework = "^3.14.0"
 django = "^4.2.6"
 pygments = "^2.16.1"
 pillow = "^10.0.1"
+gunicorn = "^21.2.0"
 
 
 [[tool.poetry.source]]
