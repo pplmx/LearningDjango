@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "djgo"
+version = "0.1.0"
+description = ""
+authors = ["Mystic <215104920@qq.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+djangorestframework = "^3.14.0"
+django = "^4.2.6"
+pygments = "^2.16.1"
+pillow = "^10.0.1"
+
+
+[[tool.poetry.source]]
+name = "mirrors"
+url = "https://mirrors.cernet.edu.cn/pypi/web/simple/"
+priority = "default"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
