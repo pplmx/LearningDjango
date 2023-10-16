@@ -9,13 +9,14 @@ readme = "README.md"
 python = "^3.12"
 djangorestframework = "^3.14.0"
 django = "^4.2.6"
-pygments = "^2.16.1"
-pillow = "^10.0.1"
 gunicorn = "^21.2.0"
+pillow = "^10.0.1"
+pygments = "^2.16.1"
+uvicorn = {extras = ["standard"], version = "^0.23.2"}
 
 
 [[tool.poetry.source]]
-name = "mirrors"
+name = "MirrorZ"
 url = "https://mirrors.cernet.edu.cn/pypi/web/simple/"
 priority = "default"
 

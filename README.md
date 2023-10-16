@@ -59,6 +59,10 @@ python manage.py startapp demo1
 python manage.py startapp demo2
 ```
 
+## Access
+
+<http://localhost:8000>
+
 ## FYI
 
 If you wanna a much smaller image, maybe you can use the following.
