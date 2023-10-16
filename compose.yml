@@ -23,3 +23,7 @@ services:
             - .env
 networks:
     sample_net:
+        name: sample_net
+        ipam:
+            config:
+                -   subnet: 172.16.155.0/24
