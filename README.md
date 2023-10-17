@@ -63,7 +63,7 @@ python manage.py startapp demo2
 
 <http://localhost:8000>
 
-## FYI
+## FYI(Deprecated)
 
 If you wanna a much smaller image, maybe you can use the following.
 BTW, I don't suggest you use the following in the development period, because its building is so slow.
