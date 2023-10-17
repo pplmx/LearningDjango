@@ -26,4 +26,4 @@ networks:
         name: sample_net
         ipam:
             config:
-                -   subnet: 172.16.155.0/24
+                -   subnet: 172.16.133.0/24
