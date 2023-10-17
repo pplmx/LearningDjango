@@ -13,7 +13,7 @@ repos:
                 args:
                     - "--allow-multiple-documents"
     -   repo: https://github.com/commitizen-tools/commitizen
-        rev: 3.10.0
+        rev: v3.10.1
         hooks:
             -   id: commitizen
     -   repo: https://github.com/pycqa/flake8

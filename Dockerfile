@@ -7,7 +7,8 @@ ENV PIP_INDEX_URL https://mirrors.cernet.edu.cn/pypi/web/simple
 
 WORKDIR /app
 
-RUN curl -sSL https://install.python-poetry.org | python -
+# Use curl to download and install poetry, avoid executing scripts from a pipe for increased security
+RUN curl -sSL https://install.python-poetry.org -o get-poetry.py && python get-poetry.py && rm -fr get-poetry.py
 
 COPY pyproject.toml .
 RUN python -m venv --copies venv
@@ -36,6 +37,6 @@ EXPOSE 8000
 
 HEALTHCHECK --interval=5s --timeout=3s --retries=3 CMD bash -c 'cat < /dev/null > /dev/tcp/127.0.0.1/8000'
 
-# here the gunicorn will read the default settings from ./gunicorn.conf.py
+# x.sh will init database and create superuser, then run server with gunicorn
 RUN chmod +x x.sh
 CMD ["./x.sh"]
