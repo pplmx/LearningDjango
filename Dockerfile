@@ -1,4 +1,4 @@
-FROM python:3.12-bookworm AS builder
+FROM python:3.13-bookworm AS builder
 
 LABEL maintainer="Mystic"
 
@@ -17,7 +17,7 @@ RUN . venv/bin/activate && \
     PATH="${HOME}/.local/bin:${PATH}" poetry install --no-directory
 
 
-FROM python:3.12-slim-bookworm
+FROM python:3.13-slim-bookworm
 
 WORKDIR /app
 COPY --from=builder /app/venv /app/venv
