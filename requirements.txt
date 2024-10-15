@@ -1,6 +1,6 @@
 --index-url https://mirrors.cernet.edu.cn/pypi/web/simple
 
-anyio==4.0.0 ; python_version >= "3.12" and python_version < "4.0"
+anyio==4.6.2.post1 ; python_version >= "3.12" and python_version < "4.0"
 asgiref==3.7.2 ; python_version >= "3.12" and python_version < "4.0"
 click==8.1.7 ; python_version >= "3.12" and python_version < "4.0"
 colorama==0.4.6 ; python_version >= "3.12" and python_version < "4.0" and (sys_platform == "win32" or platform_system == "Windows")
