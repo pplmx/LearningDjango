@@ -1,4 +1,3 @@
-version: Compose specification
 services:
     app:
         # or maybe you can use this "ghcr.io/pplmx/drf_sample"
