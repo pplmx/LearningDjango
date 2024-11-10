@@ -1,35 +1,29 @@
-FROM python:3.12-bookworm AS builder
+FROM ghcr.io/astral-sh/uv:python3.13-bookworm AS builder
 
 LABEL maintainer="Mystic"
 
-ENV PIP_NO_CACHE_DIR 1
-ENV PIP_INDEX_URL https://mirrors.cernet.edu.cn/pypi/web/simple
+ENV UV_INDEX_URL="https://mirrors.cernet.edu.cn/pypi/web/simple" \
+    PIP_INDEX_URL="https://mirrors.cernet.edu.cn/pypi/web/simple"
 
 WORKDIR /app
-
-# Use curl to download and install poetry, avoid executing scripts from a pipe for increased security
-RUN curl -sSL https://install.python-poetry.org -o get-poetry.py && python get-poetry.py && rm -fr get-poetry.py
 
 COPY pyproject.toml .
-RUN python -m venv --copies venv
-RUN . venv/bin/activate && \
-    pip install -U pip && \
-    PATH="${HOME}/.local/bin:${PATH}" poetry install --no-directory
+RUN uv sync
 
 
-FROM python:3.12-slim-bookworm
+FROM python:3.13-slim-bookworm
 
 WORKDIR /app
-COPY --from=builder /app/venv /app/venv
+COPY --from=builder /app/.venv /app/.venv
 
-ENV TZ Asia/Shanghai
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-ENV PATH /app/venv/bin:$PATH
+ENV TZ="Asia/Shanghai"
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PATH="/app/.venv/bin:$PATH"
 
-ENV DJANGO_SUPERUSER_PASSWORD admin
-ENV DJANGO_SUPERUSER_EMAIL admin@admin.io
-ENV DJANGO_SUPERUSER_USERNAME admin
+ENV DJANGO_SUPERUSER_PASSWORD="admin"
+ENV DJANGO_SUPERUSER_EMAIL="admin@admin.io"
+ENV DJANGO_SUPERUSER_USERNAME="admin"
 
 COPY . .
 

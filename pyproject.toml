@@ -1,26 +1,23 @@
-[tool.poetry]
-name = "djgo"
-version = "0.1.0"
-description = ""
-authors = ["Mystic <215104920@qq.com>"]
+[project]
+name = "learning-django"
+version = "0.0.1"
+description = "A nice python project"
 readme = "README.md"
-
-[tool.poetry.dependencies]
-python = "^3.12"
-djangorestframework = "^3.14.0"
-django = "^4.2.6"
-gunicorn = "^21.2.0"
-pillow = "^10.0.1"
-pygments = "^2.16.1"
-uvicorn = {extras = ["standard"], version = "^0.23.2"}
-psycopg = {extras = ["binary"], version = "^3.1.12"}
-
-
-[[tool.poetry.source]]
-name = "MirrorZ"
-url = "https://mirrors.cernet.edu.cn/pypi/web/simple/"
-priority = "default"
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires-python = ">=3.13"
+license = "MIT"
+authors = [
+    { name = "Mystic" },
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "django>=5.1.3",
+    "djangorestframework>=3.15.2",
+    "gunicorn>=23.0.0",
+    "pillow>=11.0.0",
+    "psycopg[binary]>=3.2.3",
+    "pygments>=2.18.0",
+    "uvicorn>=0.32.0",
+]

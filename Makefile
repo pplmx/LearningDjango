@@ -5,6 +5,19 @@ IMAGE_NAME="pplmx/drf_sample"
 COMPOSE_SERVICE_NAME="sample"
 K8S_APP="k8s/app.yml"
 
+# Init the venv
+init: sync
+	@uvx pre-commit install --hook-type commit-msg --hook-type pre-push
+
+# Sync the project with the venv
+sync:
+	@uv sync
+
+# Ruff
+ruff:
+	@uvx ruff format .
+	@uvx ruff check . --fix
+
 # Build image
 image:
 	@docker image build -t ${IMAGE_NAME} .
