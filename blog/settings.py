@@ -78,9 +78,7 @@ WSGI_APPLICATION = "blog.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": os.environ.get(
-            "DJANGO_DEFAULT_DB_ENGINE", "django.db.backends.sqlite3"
-        ),
+        "ENGINE": os.environ.get("DJANGO_DEFAULT_DB_ENGINE", "django.db.backends.sqlite3"),
         "NAME": os.environ.get("DJANGO_DEFAULT_DB_NAME", BASE_DIR / "db.sqlite3"),
         "USER": os.environ.get("DJANGO_DEFAULT_DB_USER", ""),
         "PASSWORD": os.environ.get("DJANGO_DEFAULT_DB_PASSWORD", ""),
