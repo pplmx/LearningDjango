@@ -24,4 +24,4 @@ tzdata==2023.3 ; python_version >= "3.12" and python_version < "4.0" and sys_pla
 uvicorn[standard]==0.23.2 ; python_version >= "3.12" and python_version < "4.0"
 uvloop==0.18.0 ; (sys_platform != "win32" and sys_platform != "cygwin") and platform_python_implementation != "PyPy" and python_version >= "3.12" and python_version < "4.0"
 watchfiles==0.21.0 ; python_version >= "3.12" and python_version < "4.0"
-websockets==11.0.3 ; python_version >= "3.12" and python_version < "4.0"
+websockets==14.0 ; python_version >= "3.12" and python_version < "4.0"
