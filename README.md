@@ -1,8 +1,19 @@
-# Django
+# Django Project
 
-## Configuration
+A web application built with Django framework.
 
-Default:
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Python 3.13+
+- Docker (optional)
+- Kubernetes (optional)
+- Make
+
+### Default Configuration
+
+Default superuser credentials:
 
 ```text
 username: admin
@@ -10,55 +21,112 @@ password: admin
 email: admin@admin.io
 ```
 
-You can change them by transferring the ENV variables to the Docker container.
+### Environment Variables
 
-ENV:
+You can customize the superuser account by setting these environment variables:
 
-```text
-DJANGO_SUPERUSER_USERNAME
-DJANGO_SUPERUSER_PASSWORD
-DJANGO_SUPERUSER_EMAIL
-```
+| Variable                  | Description    | Default        |
+|---------------------------|----------------|----------------|
+| DJANGO_SUPERUSER_USERNAME | Admin username | admin          |
+| DJANGO_SUPERUSER_PASSWORD | Admin password | admin          |
+| DJANGO_SUPERUSER_EMAIL    | Admin email    | admin@admin.io |
 
-## Running
+## 🛠️ Deployment
 
-### docker & compose
+### Development with Docker Compose
 
 ```shell
 make dev
 ```
 
-### k8s
+### Production with Kubernetes
 
 ```shell
 make prod
 ```
 
-### python directly
+### Run with Python Directly
+
+1. Initialize Database
+
+    ```shell
+    # Using Django manage.py
+    python manage.py makemigrations
+    python manage.py migrate
+    python manage.py createsuperuser --username admin --email admin@admin.io
+
+    # Or using uvicorn
+    uv run manage.py makemigrations
+    uv run manage.py migrate
+    uv run manage.py createsuperuser --username admin --email admin@admin.io
+    ```
+
+2. Run Development Server
+
+    ```shell
+    # Using Django manage.py (default: http://localhost:8000)
+    python manage.py runserver
+
+    # Change port
+    python manage.py runserver 8080
+
+    # Change host and port
+    # 0 is shorthand for 0.0.0.0
+    python manage.py runserver 0:8080
+
+    # Using uv
+    uv run manage.py runserver
+    uv run manage.py runserver 8080
+    uv run manage.py runserver 0:8080
+    ```
+
+3. Run Production Server
+
+    ```shell
+    # Using gunicorn with uvicorn workers (config from ./gunicorn.conf.py)
+    gunicorn blog.asgi
+    ```
+
+## 📦 Creating New Apps
+
+Following Django best practices, create new app modules using:
 
 ```shell
-python manage.py makemigrations
-python manage.py migrate
+# Using Django manage.py
+python manage.py startapp <app_name>
 
-# default running on http://localhost:8000
-python manage.py runserver
+# Or using uv
+uv run manage.py startapp <app_name>
+```
 
-# change port
-python manage.py runserver 8080
+Examples:
 
-# change address
-# 0 is a shortcut for 0.0.0.0
-python manage.py runserver 0:8080
-
-# use gunicorn and uvicorn and read config from ./gunicorn.conf.py
-gunicorn blog.asgi
-
-# create more apps
-# https://docs.djangoproject.com/en/3.2/intro/tutorial01/#creating-the-polls-app
+```shell
 python manage.py startapp demo1
 python manage.py startapp demo2
 ```
 
-## Access
+For more information,
+visit [Django documentation](https://docs.djangoproject.com/en/5.1/intro/tutorial01/#creating-the-polls-app)
 
-<http://localhost:8000>
+## 🌐 Access Application
+
+In development environment:
+
+- Main app: http://localhost:8000
+- Admin panel: http://localhost:8000/admin
+
+## 📝 Important Notes
+
+1. Remember to change default admin credentials in production
+2. Use virtual environment for dependency management
+3. Use production-grade servers like gunicorn in production
+4. Backup your database regularly
+
+## 🤝 Contributing
+
+Issues and Pull Requests are welcome!
+
+## 📄 License
+
+[MIT License](LICENSE)
