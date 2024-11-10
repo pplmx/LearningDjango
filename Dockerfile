@@ -1,36 +1,55 @@
+# Builder stage
 FROM ghcr.io/astral-sh/uv:python3.13-bookworm AS builder
 
 LABEL maintainer="Mystic"
 
-ENV UV_INDEX_URL="https://mirrors.cernet.edu.cn/pypi/web/simple" \
-    PIP_INDEX_URL="https://mirrors.cernet.edu.cn/pypi/web/simple"
+# Set build-time variables
+ARG UV_INDEX_URL="https://mirrors.cernet.edu.cn/pypi/web/simple"
+ARG PIP_INDEX_URL="https://mirrors.cernet.edu.cn/pypi/web/simple"
 
 WORKDIR /app
 
 COPY pyproject.toml .
-RUN uv sync
 
+# Install dependencies
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync
 
+# Runtime stage
 FROM python:3.13-slim-bookworm
 
+# Add non-root user
+RUN groupadd -r app && useradd -r -g app app
+
 WORKDIR /app
-COPY --from=builder /app/.venv /app/.venv
 
-ENV TZ="Asia/Shanghai"
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-ENV PATH="/app/.venv/bin:$PATH"
+# Copy virtual environment from builder
+COPY --from=builder --chown=app:app /app/.venv /app/.venv
 
-ENV DJANGO_SUPERUSER_PASSWORD="admin"
-ENV DJANGO_SUPERUSER_EMAIL="admin@admin.io"
-ENV DJANGO_SUPERUSER_USERNAME="admin"
+# Set environment variables
+ENV TZ="Asia/Shanghai" \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PATH="/app/.venv/bin:$PATH" \
+    # Django superuser settings - Consider moving these to runtime environment
+    DJANGO_SUPERUSER_PASSWORD="admin" \
+    DJANGO_SUPERUSER_EMAIL="admin@admin.io" \
+    DJANGO_SUPERUSER_USERNAME="admin"
 
-COPY . .
+# Copy application code
+COPY --chown=app:app . .
 
+# Set permissions
+RUN chmod +x x.sh
+
+# Switch to non-root user
+USER app
+
+# Expose port
 EXPOSE 8000
 
-HEALTHCHECK --interval=5s --timeout=3s --retries=3 CMD bash -c 'cat < /dev/null > /dev/tcp/127.0.0.1/8000'
+# Healthcheck
+HEALTHCHECK --start-period=30s CMD python -c "import requests; requests.get('http://localhost:8000', timeout=2)"
 
-# x.sh will init database and create superuser, then run server with gunicorn
-RUN chmod +x x.sh
+# Start application
 CMD ["./x.sh"]
