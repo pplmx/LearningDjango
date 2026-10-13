@@ -16,7 +16,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync
 
 # Runtime stage
-FROM python:3.13-slim-bookworm
+FROM python:3.15-slim-bookworm
 
 # Add non-root user
 RUN groupadd -r app && useradd -r -g app app
